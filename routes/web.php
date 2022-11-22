@@ -23,12 +23,16 @@ Route::get('/', function () {
     return view('pages/login');
 });
 
+Route::get('/dashboard', function () {
+    return view('pages/dashboard');
+});
+
 Route::resource('/admin', AdminController::class);
 Route::resource('/dokter', DokterController::class);
 Route::resource('/apoteker', ApotekerController::class);
 Route::resource('/karyawan', KaryawanController::class);
 Route::post('/auth',[AuthController::class,'store']);
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+//Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('get_medical_api/{id}',[ApiController::class,'callApi']);
